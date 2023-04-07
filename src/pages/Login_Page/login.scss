@@ -1,0 +1,80 @@
+$action-color: #39CDCC;
+
+@mixin typography($color, $size, $family, $weight, $line-height, $text-align) {
+    color: $color;
+    font-size: $size;
+    font-family: Avenir;
+    font-weight: $weight;
+    line-height: $line-height;
+    text-align: $text-align
+  }
+
+
+.login-page {
+    font-family: avenir;
+    margin: auto 30px;
+    .logo {
+        margin: 106px 0 0;
+    }
+}
+
+.login-form-col {
+    margin: auto;
+    width: 100%;
+    h3 {
+        @include typography(#213F7D, 40px, Avenir, 700, 55px, left)
+    }
+
+    .login-form{
+        width: 70%;
+    }
+}
+
+.login-button {
+    @include typography(#ffffff, 14px, Avenir, 600, 19px, center);
+    background-color: $action-color!important;
+    padding: 13px 100px;
+    border-radius: 8px;
+    display: block;
+    border: none;
+    width: 100%;
+
+}
+
+.login-form-col,
+.img-col{
+    padding: 129px 0 144px 0;
+
+}
+
+.show-password{
+    position: absolute;
+    @include typography($action-color, 12px, Avenir, 600, 16px, center);
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width:980px) {
+
+    .logo {
+        margin: 10px 0 0;
+        width: 70%;
+    }
+    .login-page {
+        img {
+            width: 100%;
+        }
+    }
+
+    .login-form-col,
+.img-col{
+    padding: 129px 0 144px 0;
+
+}
+
+.login-button {
+    padding: 13px 10px;
+}
+}

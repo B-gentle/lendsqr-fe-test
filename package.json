@@ -1,5 +1,6 @@
 {
   "name": "lendsqr-fe-test",
+  "homepage": "https://eyo-bright-lendsqr-fe-test.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

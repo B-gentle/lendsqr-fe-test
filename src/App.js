@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Login from './pages/Login_Page/Login';
-import UserDetails from './pages/dashboard/UserDetails';
+import UserDetails from './pages/dashboard/userDetails/UserDetails';
 import NoMatchPage from './pages/NoMatchPage';
 import Dashboard from './pages/dashboard/Dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';

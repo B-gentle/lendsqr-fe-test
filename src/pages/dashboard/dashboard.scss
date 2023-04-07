@@ -1,35 +1,39 @@
-@mixin box($box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04), $background: #ffffff){
-    background-color: $background;
-        box-shadow: $box-shadow;
+$box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+$background: #ffffff;
+
+@mixin box {
+  background-color: $background;
+  box-shadow: $box-shadow;
 }
 
 .dashboard-body {
+  display: flex;
+
+  header {
     display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    @include box;
+  }
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        padding: 30px;
-        @include box
-    }
+  nav {
+    @include box;
+    
+    ul {
+      list-style: none;
 
-    nav{
-        @include box;
-
-        ul{
-            list-style: none;
-            li{
-                span{
-                    &:nth-of-type(1){
-                        margin-right: 2px;
-                    }
-                }
-            }
+      li {
+        span {
+          &:nth-of-type(1) {
+            margin-right: 2px;
+          }
         }
+      }
     }
+  }
 
-    .dashcards {
-        display: flex;
-        justify-content: space-between;
-    }
+  .dashcards {
+    display: flex;
+    justify-content: space-between;
+  }
 }

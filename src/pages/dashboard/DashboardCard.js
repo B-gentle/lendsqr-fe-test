@@ -1,8 +1,9 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Col } from 'react-bootstrap'
 
 const DashboardCard = ({icon, title, figures}) => {
   return (
+    <Col lg={3} md={6} sm={12} className='mb-5'>
     <Card style={{ width: '15rem', height: '10rem' }}>
       <Card.Body>
         <Card.Title>{icon}</Card.Title>
@@ -12,6 +13,7 @@ const DashboardCard = ({icon, title, figures}) => {
         </Card.Text>
       </Card.Body>
     </Card>
+    </Col>
   )
 }
 

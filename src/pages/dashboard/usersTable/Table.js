@@ -73,7 +73,7 @@ const Table = ({columns, data }) => {
 ))}
 </Col>}
 <Col lg={hideToggle ? 9 : 12} style={{border: '2px solid red'}}>
-            <table className='table responsive' {...getTableProps()}>
+            <table responsive {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>

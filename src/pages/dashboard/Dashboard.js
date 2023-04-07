@@ -8,6 +8,7 @@ import Table from './usersTable/Table'
 import Header from '../../components/Header'
 import SideNav from '../../components/sideNav/SideNav'
 import './dashboard.scss'
+import { Container, Row } from 'react-bootstrap'
 
 const Dashboard = () => {
 
@@ -38,17 +39,19 @@ const Dashboard = () => {
                 <nav>
                     <SideNav />
                 </nav>
-                <section>
-                    <div className='dashcards'>
+                <Container>
+                    <Row className='dashcards'>
                         <DashboardCard title='Users' figures={users?.length} />
                         <DashboardCard title='Active Users' />
                         <DashboardCard title='Users with Loans' />
                         <DashboardCard title='Users with savings' />
-                    </div>
+                    </Row>
+                    <Row>
                     {isLoading && <div>Loading...</div>}
                     {isError && <div>Unable to fetch data</div>}
                     <Table data={data} columns={columns} globalFilter={globalFilter} />
-                </section>
+                    </Row>
+                </Container>
             </div>
 
         </div >

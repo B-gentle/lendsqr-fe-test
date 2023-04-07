@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table';
 import { CgSortAz, CgSortZa } from 'react-icons/cg';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+import { AiOutlineFilter } from 'react-icons/ai'
 import ColumnFilter from '../../../components/ColumnFilter';
 import SelectRow from '../../../components/SelectRow';
 import { Link } from 'react-router-dom';
 import GlobalSearch from '../../../components/GlobalSearch';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Table = ({columns, data }) => {
+
+    const [hideToggle, setHideToggle] = useState(false)
 
     const tableInstance = useTable({
         columns,
@@ -25,7 +29,7 @@ const Table = ({columns, data }) => {
                     ...columns,
                     {
                         id: 'selection',
-                        Header: '',
+                        Header: <span onClick={()=> {setHideToggle(prevHideToggle => !prevHideToggle); console.log(hideToggle)}}><AiOutlineFilter/></span>,
                         Cell: ({row}) => {
                            return <SelectRow {...row.getToggleRowSelectedProps()} id={row.id}/>
                         }
@@ -54,20 +58,21 @@ const Table = ({columns, data }) => {
     const {globalFilter, pageIndex } = state
 
     return (
-        <>
+        <Container>
         <GlobalSearch filter={globalFilter} setFilter={setGlobalFilter}/>
-            {headerGroups.map((headerGroup) => (
+        <Row>
+        {hideToggle && <Col lg={2}>
+            {headerGroups.map((headerGroup) =>  (
                 <div {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map((column) => (
-                        <div key={column.id}>
-                            <div {...column.getHeaderProps()}>
-                                {column.render("Header")}
-                            </div>
-                            <div>{column.canFilter ? <ColumnFilter column={column} /> : null}</div>
+                    {headerGroup.headers.map((column) =>  (
+                      <div key={column.id}>
+                             <div>{column.canFilter ? <ColumnFilter column={column} /> : null}</div>  
                         </div>
                     ))}
                 </div>
-            ))}
+))}
+</Col>}
+<Col lg={hideToggle ? 9 : 12} style={{border: '2px solid red'}}>
             <table className='table responsive' {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => (
@@ -137,7 +142,9 @@ selectedFlatRows.map((row) => <Link to={`/users/${row.id}`}>view Details</Link>
                     <button onClick={() => nextPage()} disabled={!canNextPage}><FaAngleRight /></button>
                 </>
             </div>
-        </>
+            </Col>
+            </Row>
+        </Container>
     )
 }
 

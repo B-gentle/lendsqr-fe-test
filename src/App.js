@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom';
-import axios  from "axios";
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Login from './pages/Login_Page/Login';
 import UserDetails from './pages/dashboard/UserDetails';
 import NoMatchPage from './pages/NoMatchPage';
 import Dashboard from './pages/dashboard/Dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+export const allUsers = process.env.REACT_APP_ALL_USERS_API
 
 function App() {
 const client = new QueryClient()

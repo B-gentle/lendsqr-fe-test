@@ -1,22 +1,16 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios';
-import { useQuery } from 'react-query';
-import { AiOutlineUser } from 'react-icons/ai'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 
 const UserDetails = () => {
   const { userId } = useParams();
 
-  //    const userDetails = localStorage.getItem("usersData")
+     const usersObject = localStorage.getItem("usersData")
+     const userDetails = JSON.parse(usersObject)
+     const user = userDetails.find(user => user.id === userId)
 
+     console.log(user)
 
-
-  const { data: user, isLoading, isError } = useQuery(["usersData"], async () => {
-    const res = await axios.get(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${userId}`);
-    localStorage.setItem("usersDetails", JSON.stringify(res.data));
-    return res.data
-  })
   return (
     <Container>
       <div>

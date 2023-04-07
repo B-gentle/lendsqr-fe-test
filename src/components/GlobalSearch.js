@@ -1,6 +1,5 @@
-import React, {useState, useMemo} from 'react';
-import { useTable, useGlobalFilter, useAsyncDebounce } from 'react-table'
-import { COLUMNS } from './column';
+import React, { useState } from 'react';
+import {  useAsyncDebounce } from 'react-table'
 
 const GlobalSearch = ({filter, setFilter}) => {
 

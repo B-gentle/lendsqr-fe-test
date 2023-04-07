@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { useQuery } from 'react-query'
 import axios from 'axios'
 import DashboardCard from './DashboardCard'
+import { allUsers } from '../../App'
 import { COLUMNS } from '../../components/column'
 import Table from './usersTable/Table'
 import Header from '../../components/Header'
@@ -11,7 +12,7 @@ import './dashboard.scss'
 const Dashboard = () => {
 
     const { data: users, isLoading, isError } = useQuery(["usersData"], async () => {
-        const res = await axios.get("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users");
+        const res = await axios.get(allUsers);
         localStorage.setItem("usersData", JSON.stringify(res.data));
         return res.data
     })
@@ -45,6 +46,7 @@ const Dashboard = () => {
                         <DashboardCard title='Users with savings' />
                     </div>
                     {isLoading && <div>Loading...</div>}
+                    {isError && <div>Unable to fetch data</div>}
                     <Table data={data} columns={columns} globalFilter={globalFilter} />
                 </section>
             </div>

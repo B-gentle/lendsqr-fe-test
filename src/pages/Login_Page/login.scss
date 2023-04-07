@@ -1,80 +1,107 @@
 $action-color: #39CDCC;
 
 @mixin typography($color, $size, $family, $weight, $line-height, $text-align) {
-    color: $color;
-    font-size: $size;
-    font-family: Avenir;
-    font-weight: $weight;
-    line-height: $line-height;
-    text-align: $text-align
-  }
-
+  color: $color;
+  font-size: $size;
+  font-family: Avenir;
+  font-weight: $weight;
+  line-height: $line-height;
+  text-align: $text-align;
+}
 
 .login-page {
-    font-family: avenir;
-    margin: auto 30px;
-    .logo {
-        margin: 106px 0 0;
-    }
+  font-family: avenir;
+  margin: auto 30px;
+
+  .logo {
+    margin: 106px 0 0;
+  }
 }
 
 .login-form-col {
-    margin: auto;
-    width: 100%;
-    h3 {
-        @include typography(#213F7D, 40px, Avenir, 700, 55px, left)
-    }
+  margin: auto;
+  width: 100%;
 
-    .login-form{
-        width: 70%;
-    }
+  h3 {
+    @include typography(#213F7D, 40px, Avenir, 700, 55px, left);
+  }
+
+  .login-form {
+    width: 70%;
+  }
 }
 
 .login-button {
-    @include typography(#ffffff, 14px, Avenir, 600, 19px, center);
-    background-color: $action-color!important;
-    padding: 13px 100px;
-    border-radius: 8px;
-    display: block;
-    border: none;
-    width: 100%;
+  @include typography(#ffffff, 14px, Avenir, 600, 19px, center);
+  background-color: $action-color !important;
+  padding: 13px 100px;
+  border-radius: 8px;
+  display: block;
+  border: none;
+  width: 100%;
+  margin-top: 30px;
+}
 
+.login-form-col {
+  box-shadow: 0px 15px 90px rgba(0, 0, 0, 0.03);
+
+  > * {
+    padding-left: 5rem;
+  }
+
+  > div:nth-of-type(1) {
+    margin-bottom: 50px;
+  }
 }
 
 .login-form-col,
-.img-col{
-    padding: 129px 0 144px 0;
-
+.img-col {
+  padding: 129px 0 144px 0;
 }
 
-.show-password{
-    position: absolute;
-    @include typography($action-color, 12px, Avenir, 600, 16px, center);
-    right: 10px;
-    bottom: 10px;
-    cursor: pointer;
-
+.forgot-password {
+  @include typography($action-color !important, 12px, Avenir, 600, 16px, right);
 }
 
-@media screen and (max-width:980px) {
+.show-password {
+  position: absolute;
+  @include typography($action-color, 12px, Avenir, 600, 16px, center);
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 980px) {
+  .login-page {
+    img {
+      width: 100%;
+    }
 
     .logo {
-        margin: 10px 0 0;
-        width: 70%;
+      margin: 20px auto 0;
+      width: 70%;
     }
-    .login-page {
-        img {
-            width: 100%;
-        }
+  }
+
+  .login-form-col {
+    width: 100%;
+    margin: auto;
+
+    .login-form {
+      width: 100%;
     }
 
-    .login-form-col,
-.img-col{
-    padding: 129px 0 144px 0;
+    > * {
+      padding-left: 0;
+    }
+  }
 
-}
+  .login-form-col,
+  .img-col {
+    padding: 20px 0 14px 0;
+  }
 
-.login-button {
+  .login-button {
     padding: 13px 10px;
-}
+  }
 }

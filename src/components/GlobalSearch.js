@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import {  useAsyncDebounce } from 'react-table'
+import { FaSearch } from 'react-icons/fa';
+import './components.scss'
 
 const GlobalSearch = ({filter, setFilter}) => {
 
@@ -9,9 +11,10 @@ const GlobalSearch = ({filter, setFilter}) => {
     setFilter(value || undefined)
   }, 2000)
   return (
-    <span>
-        <input placeholder='Search' value={value || ''} onChange={(e)=>{setValue(e.target.value)
+    <span className='global-search'>
+        <input type='text' placeholder='Search for anything' value={value || ''} onChange={(e)=>{setValue(e.target.value)
       onChange(e.target.value)}}/>
+      <button><FaSearch/></button>
     </span>
   )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Container, Row } from 'react-bootstrap'
+import { BsArrowLeft } from 'react-icons/bs'
 import './userdetails.scss'
 
 const UserDetails = () => {
@@ -13,6 +14,7 @@ const UserDetails = () => {
   return (
     <Container>
       <div>
+        <Link to='/dashboard'><BsArrowLeft/> <span>Back to Users</span></Link>
         <h3>User Details</h3>
         <button>Blacklist User</button>
         <button>Activate User</button>

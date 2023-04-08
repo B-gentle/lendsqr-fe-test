@@ -7,7 +7,7 @@ import ColumnFilter from '../../../components/ColumnFilter';
 import SelectRow from '../../../components/SelectRow';
 import { Link } from 'react-router-dom';
 import GlobalSearch from '../../../components/GlobalSearch';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Table as BootStrapTable } from 'react-bootstrap';
 
 const Table = ({columns, data }) => {
 
@@ -73,7 +73,7 @@ const Table = ({columns, data }) => {
 ))}
 </Col>}
 <Col lg={hideToggle ? 9 : 12} style={{border: '2px solid red'}}>
-            <table responsive {...getTableProps()}>
+            <BootStrapTable responsive {...getTableProps()}>
                 <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
@@ -106,7 +106,7 @@ const Table = ({columns, data }) => {
                         )
                     })}
                 </tbody>
-            </table>
+            </BootStrapTable>
             <div>
                 <span>
                     Showing{' '}

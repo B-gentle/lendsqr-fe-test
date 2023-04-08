@@ -1,5 +1,4 @@
-$box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
-$background: #ffffff;
+@import 'variables';
 
 @mixin box {
   background-color: $background;
@@ -14,6 +13,8 @@ $background: #ffffff;
     justify-content: space-between;
     padding: 30px;
     @include box;
+
+
   }
 
   nav {

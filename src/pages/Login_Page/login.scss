@@ -1,13 +1,5 @@
-$action-color: #39CDCC;
-
-@mixin typography($color, $size, $family, $weight, $line-height, $text-align) {
-  color: $color;
-  font-size: $size;
-  font-family: Avenir;
-  font-weight: $weight;
-  line-height: $line-height;
-  text-align: $text-align;
-}
+@import '_variables';
+@import '_mixins.scss';
 
 .login-page {
   font-family: avenir;

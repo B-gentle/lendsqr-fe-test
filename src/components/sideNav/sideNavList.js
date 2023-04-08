@@ -1,4 +1,4 @@
-import { FaRegHandshake, FaUserCheck, FaUserTimes, FaUserCog, FaSlidersH, FaBriefcase, FaCoins, FaUsers } from 'react-icons/fa'
+import { FaRegHandshake, FaUserCheck, FaUserTimes, FaUserCog, FaSlidersH, FaBriefcase, FaCoins, FaUsers, FaPiggyBank, FaRegChartBar, FaScroll } from 'react-icons/fa'
 
 export const customers = [{
     icon: FaRegHandshake,
@@ -17,7 +17,7 @@ export const customers = [{
     text: 'Decision Models'
 },
 {
-    icon: FaRegHandshake,
+    icon: FaPiggyBank,
     text: 'Savings'
 },
 {
@@ -63,11 +63,11 @@ export const business = [
         text: 'Service Account'
     },
     {
-        icon: FaRegHandshake,
+        icon: FaScroll,
         text: 'Settlements'
     },
     {
-        icon: FaRegHandshake,
+        icon: FaRegChartBar,
         text: 'Reports'
     },
 ]
@@ -83,5 +83,9 @@ export const settings = [
     {
         icon: FaRegHandshake,
         text: 'Audit Logs'
+    },
+    {
+        icon: FaRegHandshake,
+        text: 'Systems Messages'
     },
 ]

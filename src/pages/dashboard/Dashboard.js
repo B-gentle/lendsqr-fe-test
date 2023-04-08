@@ -33,7 +33,7 @@ const Dashboard = () => {
         const [globalFilter, setGlobalFilter] = useState('')
 
     return (
-        <div>
+        <div className='dashboard'>
             <Header filter={globalFilter} setFilter={setGlobalFilter}/>
             <div className='dashboard-body'>
                 <nav>

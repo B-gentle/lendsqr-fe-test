@@ -2,82 +2,148 @@
 @import '_mixins.scss';
 
 header {
-  background-color: $background;
-  box-shadow: $box-shadow;
-  padding: 25px 30px;
-  @include display-flex();
-    
-  > div {
-    @include display-flex;
-    flex-basis: 70%;
-    align-items: center;
+    background-color: $background;
+    box-shadow: $box-shadow;
+    padding: 25px 30px;
+    @include display-flex();
 
-    > span:nth-of-type(2) {
-@include display-flex;
-align-items: center;
-flex-basis: 30%;
-color: $text-color;
-    }
+    >div {
+        @include display-flex;
+        flex-basis: 70%;
+        align-items: center;
 
-    .header-avatar {
-      width: 48px;
-      height: 60px;
-      border-radius: 100%;
+        >span:nth-of-type(2) {
+            @include display-flex;
+            align-items: center;
+            flex-basis: 30%;
+            color: $text-color;
+        }
+
+        .header-avatar {
+            width: 48px;
+            height: 60px;
+            border-radius: 100%;
+        }
     }
-  }
 }
 
 .global-search {
-  input[type='text'] {
-    border-radius: 8px 0 0 8px;
-    border: 1px solid #213F7D;
-    border-right: none;
-  }
+    input[type='text'] {
+        border-radius: 8px 0 0 8px;
+        border: 1px solid #213F7D;
+        border-right: none;
+    }
 
-  button {
-    background-color: $action-color;
-    color: $background;
-    padding: 2.5px 10px;
-    border-radius: 0 8px 8px 0;
-  }
+    button {
+        background-color: $action-color;
+        color: $background;
+        padding: 2.5px 10px;
+        border-radius: 0 8px 8px 0;
+    }
 }
 
-nav{
-    .nav-header-top{
+nav {
+    .nav-header-top {}
 
-    }
-    >ul{
+    >ul {
         padding-left: 10px;
     }
 
-> ul >li{
-    margin-top: 41px;
-    
+    >ul>li {
+        margin-top: 41px;
 
-    ul{
-        padding-left: 0;
-        margin-left: 0;
 
-        li{
-            margin-top: 31px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            &:nth-child(1){
-                margin-top: 20px;
+        ul {
+            padding-left: 0;
+            margin-left: 0;
+
+            li {
+                margin-top: 31px;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+
+                &:nth-child(1) {
+                    margin-top: 20px;
+                }
             }
+
         }
 
     }
-
-}
 }
 
-.table-pagination{
+.table-pagination {
     @include display-flex;
     margin-top: 23px
 }
 
 @media screen and (max-width: 980px) {
+    header {
+        flex-direction: column;
+        >div {
+            flex-basis: 100%;
+            flex-direction: column;
+
+            >span:nth-of-type(2) {
+                align-items: center;
+                width: 100%;
+                margin-top: 2rem;
+            }
+        }
+    }
+
+    .global-search {
+        width: 100%;
+        margin-top: 2rem;
+
+        input[type='text'] {
+            width: 80%;
+        }
+
+        button {
+            width: 20%;
+        }
+    }
+
+
+    nav {
+        .nav-header-top {
+            padding: 10px;
+            h5{
+                display: none;
+            }
+        }
     
+        >ul {
+            padding:10px
+        }
+    
+        >ul>li {
+            margin-top: 41px;
+
+            span:nth-child(2){
+                display: none;
+            }
+    
+    
+            ul {
+                padding-left: 0;
+                margin-left: 0;
+    
+                li {
+                    margin-top: 31px;
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+    
+                    &:nth-child(1) {
+                        margin-top: 20px;
+                    }
+                }
+    
+            }
+    
+        }
+    }
 }

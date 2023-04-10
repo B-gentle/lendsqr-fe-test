@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Container, Row } from 'react-bootstrap'
 import { BsArrowLeft } from 'react-icons/bs'
 import './userdetails.scss'
-import { eduEmployment } from './userDetailsList'
+import { eduEmployment, guarantor, socials } from './userDetailsList'
 import UserBluePrint from './UserBluePrint'
 
 const UserDetails = () => {
@@ -36,7 +36,35 @@ const UserDetails = () => {
     }
   })
 
-  console.log(details)
+  let {link} = socials
+  link = socials.map((details, id) => {
+    switch (id) {
+      case 0 :
+        return user.socials.twitter;
+        case 1 :
+          return user.socials.facebook;
+          case 2 :
+          return user.socials.instagram;
+      default:
+        return "";
+    }
+  })
+
+  let {link:guarantorLink} = guarantor
+  guarantorLink = guarantor.map((details, id) => {
+    switch (id) {
+      case 0 :
+        return `${user.guarantor.firstName} ${user.guarantor.lastName}`;
+        case 1 :
+          return user.guarantor.phoneNumber;
+          case 2 :
+          return "NA"
+          case 3 :
+          return user.guarantor.gender === "Male" ? "Brother" : "Sister";
+      default:
+        return "";
+    }
+  })
 
   return (
     <Container>
@@ -69,56 +97,15 @@ const UserDetails = () => {
           <UserBluePrint header="Education and Employment" arr={eduEmployment} details={details} />
         </Row>
         <Row>
-          <UserBluePrint header="Socials" arr={eduEmployment} />
+          <UserBluePrint header="Socials" arr={socials} details={link}/>
         </Row>
        
-        <Row className='sample'>
-          <main>Socials</main>
-          <span>
-            <span>
-              <span>TWITTER</span>
-              <span>{user?.socials.twitter}</span>
-            </span>
-            <span>
-              <span>FACEBOOK</span>
-              <span>{user?.socials.facebook}</span>
-            </span>
-            <span>
-              <span>INSTAGRAM</span>
-              <span>{user?.socials.instagram}</span>
-            </span>
-          </span>
-
+        <Row>
+          <UserBluePrint header="Guarantors" arr={guarantor} details={guarantorLink}/>
         </Row>
-        <Row className='sample'>
-          <main>Socials</main>
-          <span>
-            <span>
-              <span>TWITTER</span>
-              <span>{user?.socials.twitter}</span>
-            </span>
-            <span>
-              <span>FACEBOOK</span>
-              <span>{user?.socials.facebook}</span>
-            </span>
-            <span>
-              <span>INSTAGRAM</span>
-              <span>{user?.socials.instagram}</span>
-            </span>
-          </span>
-        </Row>
-        
-
-        <div>{user?.email}</div>
-        <div>{user?.email}</div>
-        <div>{user?.email}</div>
       </Row>
     </Container>
   )
-}
-
-export function getParamId(id) {
-  return id;
 }
 
 export default UserDetails 

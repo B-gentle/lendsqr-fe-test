@@ -7,7 +7,7 @@ const UserBluePrint = ({header, arr, details}) => {
     <Row className='blue-print'>
         <h4>{header}</h4>
         <Row className='second-row'>
-     {arr.map((arr, id)=> <Col lg={3}>
+     {arr.map((arr, id)=> <Col key={id} lg={3}>
         <span>{arr.title}</span>
        {details && <span> {details[id]}</span>} 
        </Col>

@@ -1,8 +1,3 @@
-import { getParamId } from "./UserDetails" 
-
-const id = getParamId()
-console.log(id)
-
 export const personalInfo = []
 export const eduEmployment = [{
     title: "level of education",
@@ -29,15 +24,32 @@ export const eduEmployment = [{
 export const socials = [
     {
         title:"twitter" ,
-        detail: "user.education.loanRepayment"
+       link: "user.education.loanRepayment"
     },
     {
         title:"facebook" ,
-        detail: "user.education.loanRepayment"
+        link: "user.education.loanRepayment"
     },
     {
         title:"instagram" ,
-        detail: "user.education.loanRepayment"
+        link: "user.education.loanRepayment"
     }
 ]
-export const guarantor = []
+export const guarantor = [
+    {
+        title:"full name" ,
+       link: "dray joe"
+    },
+    {
+        title:"Phone Number" ,
+        link: "08142"
+    },
+    {
+        title:"Email Address" ,
+        link: "NA"
+    },
+    {
+        title:"Relationship" ,
+        link: "Brother"
+    }
+]

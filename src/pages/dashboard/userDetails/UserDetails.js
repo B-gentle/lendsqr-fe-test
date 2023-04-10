@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import { Container, Row } from 'react-bootstrap'
 import { BsArrowLeft } from 'react-icons/bs'
 import './userdetails.scss'
+import { eduEmployment } from './userDetailsList'
+import UserBluePrint from './UserBluePrint'
 
 const UserDetails = () => {
   const { userId } = useParams();
@@ -11,10 +13,35 @@ const UserDetails = () => {
   const userDetails = JSON.parse(usersObject)
   const user = userDetails.find(user => user.id === userId)
 
+  let {details} = eduEmployment 
+  details = eduEmployment.map((details, id) => {
+    switch (id) {
+      case 0 :
+        return user.education.level;
+        case 1 :
+          return user.education.employmentStatus;
+          case 2 :
+          return user.education.sector;
+          case 3 :
+          return user.education.duration;
+          case 4 :
+          return user.education.officeEmail;
+          case 5 :
+          return `${user.education.monthlyIncome[0]} - ${user.education.monthlyIncome[1]}`;
+          case 6 :
+          return user.education.loanRepayment;
+
+      default:
+        return "";
+    }
+  })
+
+  console.log(details)
+
   return (
     <Container>
       <div>
-        <Link to='/dashboard'><BsArrowLeft/> <span>Back to Users</span></Link>
+        <Link to='/dashboard'><BsArrowLeft /> <span>Back to Users</span></Link>
         <h3>User Details</h3>
         <button>Blacklist User</button>
         <button>Activate User</button>
@@ -39,13 +66,12 @@ const UserDetails = () => {
         </Row>
 
         <Row>
-
+          <UserBluePrint header="Education and Employment" arr={eduEmployment} details={details} />
         </Row>
-        <span></span>
-      </Row>
-      <Row>
-        <Row></Row>
-        <Row></Row>
+        <Row>
+          <UserBluePrint header="Socials" arr={eduEmployment} />
+        </Row>
+       
         <Row className='sample'>
           <main>Socials</main>
           <span>
@@ -80,10 +106,8 @@ const UserDetails = () => {
               <span>{user?.socials.instagram}</span>
             </span>
           </span>
-
         </Row>
-        <Row></Row>
-        <Row></Row>
+        
 
         <div>{user?.email}</div>
         <div>{user?.email}</div>
@@ -93,4 +117,8 @@ const UserDetails = () => {
   )
 }
 
-export default UserDetails
+export function getParamId(id) {
+  return id;
+}
+
+export default UserDetails 

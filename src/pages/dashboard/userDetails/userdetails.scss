@@ -4,7 +4,7 @@
 
 
 .general-details{
-height: 210px;
+// height: 210px;
 
 .user-avatar{
     display: flex;
@@ -41,4 +41,30 @@ main{
         flex-direction: column;
        } 
     }
+}
+
+.blue-print {
+    border-bottom: 1px solid #5e6471;
+
+    h4{
+@include typography($text-color, 16px, $regular-font-family, 500, 19px, left)
+    }
+.second-row{
+    display: flex;
+    flex-wrap: wrap;
+    span{
+        margin: 1rem 3rem 2rem 0.8rem;
+        flex-direction: column;
+    }
+    span:nth-of-type(1){
+        text-transform: uppercase;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.3rem;
+    }
+    span:nth-of-type(2){
+        display: flex;
+        margin-bottom: 0;
+    }
+}
 }

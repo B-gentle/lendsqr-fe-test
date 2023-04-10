@@ -3,7 +3,6 @@
 
 .dashboard{
   font-family: $regular-font-family;
-  border: 1px solid red;
 }
 
 .dashboard-body{
@@ -35,6 +34,7 @@
   }
 
   .dashcards {
+    width: 100%!important;
     display: flex;
     justify-content: space-between;
   }

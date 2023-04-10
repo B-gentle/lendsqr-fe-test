@@ -1,45 +1,15 @@
-import React, { useState } from 'react';
-import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table';
+import React, { useContext } from 'react';
 import { CgSortAz, CgSortZa } from 'react-icons/cg';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
-import { AiOutlineFilter } from 'react-icons/ai'
 import ColumnFilter from '../../../components/ColumnFilter';
-import SelectRow from '../../../components/SelectRow';
-import { Link } from 'react-router-dom';
-import GlobalSearch from '../../../components/GlobalSearch';
-import { Col, Container, Row, Table as BootStrapTable, Popover } from 'react-bootstrap';
+import { Col, Container, Row, Table as BootStrapTable } from 'react-bootstrap';
 import '../../../components/components.scss';
+import { TableContext } from '../Dashboard';
 
 
-const Table = ({ columns, data }) => {
+const Table = ({ hideToggle }) => {
 
-    const [hideToggle, setHideToggle] = useState(false)
-
-    const tableInstance = useTable({
-        columns,
-        data
-    },
-
-        useFilters,
-        useGlobalFilter,
-        useSortBy,
-        usePagination,
-        useRowSelect,
-        (hooks) => {
-            hooks.visibleColumns.push((columns) => {
-                return [
-                    ...columns,
-                    {
-                        id: 'selection',
-                        Header: <span onClick={() => { setHideToggle(prevHideToggle => !prevHideToggle); console.log(hideToggle) }}><AiOutlineFilter /></span>,
-                        Cell: ({ row }) => {
-                            return <SelectRow {...row.getToggleRowSelectedProps()} id={row.id} popover={popover} />
-                        }
-                    }
-
-                ]
-            })
-        })
+    const tableInstance = useContext(TableContext);
 
     const { getTableProps,
         getTableBodyProps,
@@ -53,37 +23,12 @@ const Table = ({ columns, data }) => {
         pageOptions,
         gotoPage,
         state,
-        setGlobalFilter,
-        selectedFlatRows,
     } = tableInstance
 
-    const { globalFilter, pageIndex } = state
-
-    const popover = (
-        <Popover id="view-details-popup">
-            <Popover.Body>
-                <pre>
-                    <code>
-                        <div>
-                            {
-                                selectedFlatRows.map((row) => row?.id
-                                )}
-                        </div>
-                        <div>
-                            Activate User
-                        </div>
-                        <div>
-                            Blacklist User
-                        </div>
-                    </code>
-                </pre>
-            </Popover.Body>
-        </Popover>
-    );
-
+    const { pageIndex } = state  
+    
     return (
         <Container>
-            <GlobalSearch filter={globalFilter} setFilter={setGlobalFilter} />
             <Row>
                 {hideToggle && <Col lg={4}>
                     {headerGroups.map((headerGroup) => (

@@ -4,12 +4,12 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import ColumnFilter from '../../../components/ColumnFilter';
 import { Col, Container, Row, Table as BootStrapTable } from 'react-bootstrap';
 import '../../../components/components.scss';
-import { TableContext } from '../Dashboard';
+import {TableContext} from '../../../Context';
 
 
 const Table = ({ hideToggle }) => {
 
-    const tableInstance = useContext(TableContext);
+    const {tableInstance} = useContext(TableContext);
 
     const { getTableProps,
         getTableBodyProps,

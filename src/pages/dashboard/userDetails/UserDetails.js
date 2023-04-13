@@ -69,7 +69,7 @@ const UserDetails = () => {
   return (
     <Container>
       <div>
-        <Link to='/dashboard'><BsArrowLeft /> <span>Back to Users</span></Link>
+        <Link to='/users'><BsArrowLeft /> <span>Back to Users</span></Link>
         <h3>User Details</h3>
         <button>Blacklist User</button>
         <button>Activate User</button>

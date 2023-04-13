@@ -2,7 +2,7 @@ import React, { useRef, forwardRef, useEffect } from 'react'
 import { OverlayTrigger } from 'react-bootstrap'
 import { BiDotsVerticalRounded } from 'react-icons/bi'
 
-const SelectRow = forwardRef(({id, popover, origin, indeterminate, ...rest}, ref) => {
+const SelectRow = forwardRef(({id, popover, indeterminate, ...rest}, ref) => {
             const defaultRef = useRef()
             const resolvedRef = ref || defaultRef
 

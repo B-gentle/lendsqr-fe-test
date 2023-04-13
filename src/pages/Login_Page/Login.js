@@ -34,7 +34,7 @@ const Login = () => {
             <Form.Text className="forgot-password">
               FORGOT PASSWORD?
             </Form.Text>
-            <Link to='/dashboard'>
+            <Link to='/users'>
             <Button className='login-button' type="submit">
               LOG IN
             </Button>

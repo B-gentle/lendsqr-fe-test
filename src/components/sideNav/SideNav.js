@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { customers, business, settings } from './sideNavList'
 import { FaHome, FaAngleDown, FaBriefcase } from 'react-icons/fa';
 import { MdOutlineLogout } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import '../../components/components.scss'
+import { UsersContext } from '../../Context';
 
 const SideNav = () => {
+  const { user, setUser } = useContext(UsersContext)
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("loginStatus")
+  }
+
+  const logout = () => {
+    handleLogout();
+    setUser(null)
+    navigate('/')
+  }
+
+
   return (
     <>
       <div className='nav-header-top'>
-        <span><FaBriefcase/></span>
+        <span><FaBriefcase /></span>
         <h5>Switch Organization <FaAngleDown /></h5>
       </div>
       <ul>
@@ -43,15 +59,15 @@ const SideNav = () => {
           <span></span>
           <span>SETTINGS</span>
           <ul>
-          {settings && settings.map((setting, id) => <li key={id}>
-          <span>{<setting.icon />}</span>
-          <span>{setting.text}</span>
-        </li>)}
+            {settings && settings.map((setting, id) => <li key={id}>
+              <span>{<setting.icon />}</span>
+              <span>{setting.text}</span>
+            </li>)}
           </ul>
         </li>
 
-        <li>
-          <span><MdOutlineLogout/></span>
+        <li onClick={logout}>
+          <span><MdOutlineLogout /></span>
           <span>Logout</span>
         </li>
 

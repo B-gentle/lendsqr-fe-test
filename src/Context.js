@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {createContext, useState, useMemo, useContext} from 'react'
+import {createContext, useState, useMemo } from 'react'
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table';
 import { COLUMNS } from './components/column';
 import { Popover } from 'react-bootstrap';
@@ -16,6 +16,7 @@ const allUsers = process.env.REACT_APP_ALL_USERS_API
 const TableApiContext = ({children}) => {
 
     const [users, setUsers] = useState([]);
+    const [user, setUser] = useState(null);
     const [hideToggle, setHideToggle] = useState()
 
     const {  isLoading, isError } = useQuery(["usersData"], async () => {
@@ -72,8 +73,10 @@ const TableApiContext = ({children}) => {
               </Popover>
             );
 
+            
+
 return (
-    <UsersContext.Provider value={{ users, isLoading, isError }}>
+    <UsersContext.Provider value={{ users, isLoading, isError, user, setUser }}>
       <TableContext.Provider value={{ tableInstance, hideToggle, setHideToggle }}>
         {children}
       </TableContext.Provider>

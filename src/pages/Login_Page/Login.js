@@ -1,12 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { login } from '../../redux/reducers/userSlice';
+import { useDispatch } from 'react-redux';
 import img from '../../assets/pablo-sign-in-1.png';
 import logo from '../../assets/logo.svg';
 import './login.scss';
 import { useNavigate } from 'react-router-dom';
-import { UsersContext } from '../../Context';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
   const [form, setForm] = useState({
@@ -14,31 +16,20 @@ const Login = () => {
     password: ''
   })
 
-  const handleChange = (e)=> {
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-  
-  const { user, setUser  } = useContext(UsersContext);
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setUser({
-      form,
-      isLoggedIn: true
-    })
+    dispatch(login({ ...form, isLoggedIn: true }))
     setForm({
       email: '',
-    password: '',
+      password: '',
     });
+    navigate('/users')
   }
 
-  useEffect(() => {
-    if (user != null){
-      sessionStorage.setItem("loginStatus", JSON.stringify(user))
-      navigate('/users')
-    }
-    }, [user])
-  
 
   return (
     <Container fluid className='login-page'>
@@ -58,10 +49,10 @@ const Login = () => {
               <Form.Control type="email" placeholder="Email" name='email' value={form.email} onChange={handleChange} required />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="password" style={{position: 'relative'}}>
+            <Form.Group className="mb-3" controlId="password" style={{ position: 'relative' }}>
               <Form.Label>Password</Form.Label>
-              <span className='show-password' onClick={()=>{setShowPassword(!showPassword)}}>Show</span>
-              <Form.Control type={showPassword ? 'text' : 'password'} placeholder="Password" name='password' value={form.password} onChange={handleChange} required/>
+              <span className='show-password' onClick={() => { setShowPassword(!showPassword) }}>Show</span>
+              <Form.Control type={showPassword ? 'text' : 'password'} placeholder="Password" name='password' value={form.password} onChange={handleChange} required />
             </Form.Group>
             <Form.Text className="forgot-password">
               FORGOT PASSWORD?

@@ -1,23 +1,19 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { customers, business, settings } from './sideNavList'
 import { FaHome, FaAngleDown, FaBriefcase } from 'react-icons/fa';
 import { MdOutlineLogout } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../../components/components.scss'
-import { UsersContext } from '../../Context';
+import { logout } from '../../redux/reducers/userSlice';
 
 const SideNav = () => {
-  const { user, setUser } = useContext(UsersContext)
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("loginStatus")
-  }
-
-  const logout = () => {
-    handleLogout();
-    setUser(null)
-    navigate('/')
+  const logoutHandler = () =>{
+   dispatch(logout()); 
+   navigate('/')
   }
 
 
@@ -66,7 +62,7 @@ const SideNav = () => {
           </ul>
         </li>
 
-        <li onClick={logout}>
+        <li onClick={logoutHandler}>
           <span><MdOutlineLogout /></span>
           <span>Logout</span>
         </li>

@@ -1,16 +1,15 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import logo from '../assets/logo.svg'
 import ade from '../assets/adedeji.png'
 import GlobalSearch from './GlobalSearch'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { FaAngleDown } from 'react-icons/fa'
 import './components.scss';
-import { UsersContext } from '../Context'
 
 
 const Header = ({ filter, setFilter }) => {
   const loggedInUser = sessionStorage.getItem("loginStatus");
-  const { form: { email } = {} } = loggedInUser ? JSON.parse(loggedInUser) : {};  
+  const { email }  = loggedInUser ? JSON.parse(loggedInUser) : {};  
   
   return (
     <header>
@@ -21,7 +20,7 @@ const Header = ({ filter, setFilter }) => {
         <span>Docs</span>
         <IoMdNotificationsOutline />
         <img className='header-avatar' src={ade} alt='ade-png' />
-        <span>{email ? email : 'NO User'}</span>
+        <span>{email ? email : 'No User'}</span>
         <FaAngleDown />
         </span>
         

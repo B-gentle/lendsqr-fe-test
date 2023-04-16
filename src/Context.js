@@ -1,9 +1,8 @@
-import axios from 'axios';
-import {createContext, useState, useMemo } from 'react'
+import {createContext, useState, useMemo } from 'react';
+import useGetUsers from './useGetUsers';
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useRowSelect } from 'react-table';
 import { COLUMNS } from './components/column';
 import { Popover } from 'react-bootstrap';
-import { useQuery } from 'react-query';
 import SelectRow from './components/SelectRow';
 import { AiOutlineFilter } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -15,16 +14,8 @@ const allUsers = process.env.REACT_APP_ALL_USERS_API
 
 const TableApiContext = ({children}) => {
 
-    const [users, setUsers] = useState([]);
-    const [user, setUser] = useState(null);
+    const {users, isLoading, isError, refetch} = useGetUsers(allUsers);
     const [hideToggle, setHideToggle] = useState()
-
-    const {  isLoading, isError } = useQuery(["usersData"], async () => {
-        const res = await axios.get(allUsers);
-        setUsers(res.data);
-        localStorage.setItem("usersData", JSON.stringify(res.data));
-        return res.data
-      });
 
       const columns = useMemo(() => [...COLUMNS,
         {
@@ -76,7 +67,7 @@ const TableApiContext = ({children}) => {
             
 
 return (
-    <UsersContext.Provider value={{ users, isLoading, isError, user, setUser }}>
+    <UsersContext.Provider value={{ users, isLoading, isError, refetch }}>
       <TableContext.Provider value={{ tableInstance, hideToggle, setHideToggle }}>
         {children}
       </TableContext.Provider>
